@@ -1,0 +1,439 @@
+.social-icons {
+  position: fixed;
+  top:200px; /* Adjust this value to position vertically */
+  right: 15px;/* Adjust this value to control the distance from the right edge */
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+.social-icons ul{
+  padding: initial;
+}
+.social-icons ul li{
+  height: 40px;
+  width: 40px;
+  list-style-type: none;
+  padding-left: 12px;
+  padding-top:6px;
+  padding-right: 5px;
+  margin-top: 5px; 
+  color:#fff; 
+}
+
+
+.social-icons ul li:hover{
+  transform: scale(1.2) translateX(-10px);
+  
+}
+.social-icons .facebook i {
+  font-size: 30px;
+}
+
+.social-icons .whatsapp i {
+  font-size: 30px; /* Different size for WhatsApp icon */
+}
+
+.social-icons .instagram i {
+  font-size: 30px; /* Different size for Instagram icon */
+}
+.fa-brands.fa-facebook {
+  color: #3b5998; /* Change the color to your desired color */
+}
+
+.fa-brands.fa-whatsapp {
+  color: #25d366; /* Change the color to your desired color */
+}
+
+.fa-brands.fa-instagram {
+  color: #bc2a8d; /* Change the color to your desired color */
+}
+
+const chatbotToggler = document.querySelector(".chatbot-toggler");
+const closeBtn = document.querySelector(".close-btn");
+const chatbox = document.querySelector(".chatbox");
+const chatInput = document.querySelector(".chat-input textarea");
+const sendChatBtn = document.querySelector(".chat-input span");
+
+let userMessage = null; // Variable to store user's message
+const API_KEY = "PASTE-YOUR-API-KEY"; // Paste your API key here
+const inputInitHeight = chatInput.scrollHeight;
+
+const createChatLi = (message, className) => {
+    // Create a chat <li> element with passed message and className
+    const chatLi = document.createElement("li");
+    chatLi.classList.add("chat", `${className}`);
+    let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined">smart_toy</span><p></p>`;
+    chatLi.innerHTML = chatContent;
+    chatLi.querySelector("p").textContent = message;
+    return chatLi; // return chat <li> element
+}
+
+const generateResponse = (chatElement) => {
+    const API_URL = "https://api.openai.com/v1/chat/completions";
+    const messageElement = chatElement.querySelector("p");
+
+    // Define the properties and message for the API request
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${API_KEY}`
+        },
+        body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [{role: "user", content: userMessage}],
+        })
+    }
+
+    // Send POST request to API, get response and set the reponse as paragraph text
+    fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
+        messageElement.textContent = data.choices[0].message.content.trim();
+    }).catch(() => {
+        messageElement.classList.add("error");
+        messageElement.textContent = "Oops! Something went wrong. Please try again.";
+    }).finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
+}
+
+const handleChat = () => {
+    userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
+    if(!userMessage) return;
+
+    // Clear the input textarea and set its height to default
+    chatInput.value = "";
+    chatInput.style.height = `${inputInitHeight}px`;
+
+    // Append the user's message to the chatbox
+    chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+    chatbox.scrollTo(0, chatbox.scrollHeight);
+    
+    setTimeout(() => {
+        // Display "Thinking..." message while waiting for the response
+        const incomingChatLi = createChatLi("Thinking...", "incoming");
+        chatbox.appendChild(incomingChatLi);
+        chatbox.scrollTo(0, chatbox.scrollHeight);
+        generateResponse(incomingChatLi);
+    }, 600);
+}
+
+chatInput.addEventListener("input", () => {
+    // Adjust the height of the input textarea based on its content
+    chatInput.style.height = `${inputInitHeight}px`;
+    chatInput.style.height = `${chatInput.scrollHeight}px`;
+});
+
+chatInput.addEventListener("keydown", (e) => {
+    // If Enter key is pressed without Shift key and the window 
+    // width is greater than 800px, handle the chat
+    if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+        e.preventDefault();
+        handleChat();
+    }
+});
+
+sendChatBtn.addEventListener("click", handleChat);
+closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
+chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+
+.embed_v0bku .embedded_messenger {
+  position: fixed;
+  z-index: 2147483647;
+  height: 80%;
+  width: 360px;
+  right: -360px;
+  bottom: 5.9rem!important;
+  visibility: hidden;
+  transition: .4s ease-in-out right;
+  background-color: #fff;
+  border-radius: 8px;
+}
+#welcome_message_parent_v0bku {
+  position: fixed;
+  right: 2.3rem;
+  bottom: 6rem;
+  z-index: 9999999999;
+}
+.embed_v0bku .welcome_message {
+  z-index: 2147483646;
+  background-color: #f0f0f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+  border-radius: .2cm;
+  overflow: hidden;
+  position: relative;
+  height: fit-content;
+  cursor: pointer;
+  width: 300px;
+  overflow-x: hidden;
+  min-height: 115px;
+}
+
+
+<div class="embedded_messenger" id="embedded_messenger_v0bku">
+            <div class="close_button"></div>
+            <div class="content_window">
+                <iframe id="botkit_client_v0bku" frameborder="0" src="https://v0bku.hybrid.chat/chat.html" data-gtm-yt-inspected-10043130_31="true">
+
+                </iframe>
+            </div>
+        </div>
+        <div id="welcome_message_v0bku" class="welcome_message" style="display: block;">
+            <p class="details-1 online">Chatty</p>
+            <p class="details-2">Virtual Assistant to Hybrid.Chat</p>
+            <p class="details-3">Hello and Welcome to Hybrid.Chat.</p>
+        </div>
+        <div id="message_header_v0bku" class="message_header">
+            <img class="message_header_icon" src="https://v0bku.hybrid.chat/images/chat.png">
+            <span id="closeToggle" style="display:flex!important;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="30px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="30px" xml:space="preserve">
+                    <path d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z" fill="white" fill-rule="evenodd" clip-rule="evenodd">
+                    </path>
+                </svg>
+            </span>
+        </div>
+
+        <script src="https://v0bku.hybrid.chat/right_embed.js"></script>
+        <script type="text/javascript" src="https://hybrid.chat/wp-content/uploads/winp-css-js/250289.js?ver=1630573478"></script>
+
+
+        width: 20px;
+    height: 20px;
+    z-index: 2147483001;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAmElEQVRYw+2WSw6AIAwFSTgjVyThjCzGha7ET9G+haazhnkBtG1KQRD8FjKVYl5dqOQ5fQO6LYJCB9pEBJUVQ8SmB6hp4sjdFmFf+WjjY71t8yv9veC1/lrioj8XuemPZa76UeiuHyL89bsIhX6I8NfLA8RXJH5k8Wcq/tHEpUJc7MTlWtxwxC1T3vT1Y4t68JKPjkEQfIwFBZRdp3mb+AEAAAAASUVORK5CYII=);
+    position: absolute;
+    cursor: pointer;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position: absolute;
+    top: -30px;
+    right: 5px;
+    background-color: #afafaf;
+    border-radius: 50%;
+    box-shadow: 0px 1px 4px 0 rgb(0 0 0 / 19%);
+    opacity: 0;
+    transition: opacity 0.1s ease-in;
+
+
+    <div class="fixed-height" id="chatbox-container">
+      <div class="chatbox  conversation-part--animation ">
+        <div class="conversation-part conversation-part--question">
+          <div class="avatar-wrapper same-row">
+            <div class="avatar"></div>
+          </div>
+          <div class="same-row question-part text-ltr">
+            <div class="bubble no-border" style="display: table; direction: unset;">
+              <div class="bubble-label">
+                <div>
+                  <strong>Ivy</strong>
+                </div>
+                <div>How can I help you ?</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="conversation-part conversation-part--question">
+          <div class="avatar-wrapper same-row">
+
+          </div>
+          <div class="same-row question-part text-ltr">
+            <div class="bubble no-border" style="display: table; direction: unset;">
+              <div class="bubble-label">
+                <div>
+                  <br>
+                </div>
+                <div>How may I assist you?</div>
+              </div>
+              <div class="option-wrapper">
+                <div class="bubble bubble-inline option theme-border theme-color">
+                  <div>Book a room</div>
+                </div>
+                <div class="bubble bubble-inline option theme-border theme-color">
+                  <div>Service</div>
+                </div>
+                <div class="bubble bubble-inline option theme-border theme-color">
+                  <div>Locate us</div>
+                </div>
+              </div>
+            </div>
+            <span class="comment">18h ago</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    .question-part {
+      max-width: 86%;
+      transition: width 2s;
+      overflow: hidden;
+  }
+  .no-border {
+    border-width: 0;
+}
+.bubble {
+  border-radius: 1.3em;
+  border: 1px solid transparent;
+  padding: 10px 17px;
+  transition: width 2s;
+  word-break: break-word;
+  line-height: 20px;
+  background-color: #f8f8f8;
+  text-align: initial;
+}
+.bubble-label {
+  color: #455a64;
+  font-size: 15.5px;
+}
+.bubble-label div {
+  font-weight: 400;
+}
+style attribute {
+  display: table;
+  direction: unset;
+}
+.option-wrapper {
+  overflow-x: hidden;
+  margin-top: 5px;
+}
+.option.bubble {
+  background-color: #fff;
+}
+
+.theme-border {
+  border-color: #ffffff;
+}
+
+.theme-color {
+  color: #000000bd;
+}
+
+.bubble-inline {
+  display: inline-block;
+}
+.option {
+  position: relative;
+  padding: 10px 14px 10px 32px !important;
+  margin: 5px;
+}
+.option ::before {
+  content: "";
+  background-color: #e1e1e1;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 12px;
+  top: 15px;
+  border-radius: 50%;
+}
+
+
+
+<ul class="chatbox">
+  <li class="chat incoming" >
+    
+    <span class="material-symbols-outlined">smart_toy</span>
+    
+    <p>Hi !<br>How can I help you today?</p>
+  </li>
+  <li class="chat incoming" id="chat incoming">
+    <span class="material-symbols-outlined">smart_toy</span>
+    <p class="chat-container">How may I assist you<br>
+        <div class="option-wrapper">
+            <div class="product" id="product">
+              <div>Product</div>
+            </div>
+            <div class="service" id="service">
+              <div>Service</div>
+            </div>
+            <div class="reviews" id="reviews">
+              <div>Reviews</div>
+            </div>
+          </div>
+    </p></li>
+  
+</ul>
+
+<div class="social-icons">
+  <ul>
+      <a href="https://www.facebook.com/profile"><li class="facebook"><i class="fa-brands fa-facebook"></i></li></a>
+      <a href="https://wa.me/ 9677192226"><li class="whatsapp"><i class="fa-brands fa-whatsapp"></i></li></a>
+      <a href="https://www.instagram.com/"><li class="instagram"><i class="fa-brands fa-instagram"></i></li></a>
+  </ul>
+</div>
+
+.social-icons {
+  position:fixed;
+  top:200px; /* Adjust this value to position vertically */
+  right: 15px;/* Adjust this value to control the distance from the right edge */
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+.social-icons ul{
+  padding: initial;
+}
+.social-icons ul li{
+  height: 40px;
+  width: 40px;
+  list-style-type: none;
+  padding-left: 12px;
+  padding-top:6px;
+  padding-right: 5px;
+  margin-top: 5px; 
+  color:#000; 
+}
+
+.social-icons ul li:hover{
+
+  transform: scale(1.2) translateX(-10px);
+  
+}
+.social-icons .facebook i {
+  font-size: 30px;
+ 
+}
+
+.social-icons .whatsapp i {
+  font-size: 30px; /* Different size for WhatsApp icon */
+}
+
+.social-icons .instagram i {
+  font-size: 30px; /* Different size for Instagram icon */
+}
+ 
+.fa-brands.fa-facebook {
+  color: #ffffff;
+  font-size:30px;
+ 
+    border-radius: 3px;
+    transition-property: "background", border-radius;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    
+}
+.fa-brands.fa-facebook:hover{
+  background: #3d7df2;
+    border-radius: 50%;
+}
+.fa-brands.fa-whatsapp {
+  color: #ffffff; /* Change the color to your desired color */
+  font-size:30px;
+    border-radius: 3px;
+    transition-property: "background", border-radius;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+.fa-brands.fa-whatsapp:hover{
+  color: #25d366;
+    border-radius: 50%;
+}
+
+.fa-brands.fa-instagram {
+  color: #fff; /* Change the color to your desired color */
+  font-size:30px;
+  border-radius: 3px;
+  transition-property: "background", border-radius;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+}
+.fa-brands.fa-instagram:hover{
+  color: #bc2a8d;
+    border-radius: 50%;
+}

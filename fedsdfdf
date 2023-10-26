@@ -1,0 +1,149 @@
+<div class="others-option">
+                                <div class="option-item">
+                                    <div class="wishlist-btn">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingWishlistModal"><i class='bx bxl-whatsapp'></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="option-item">
+                                    <div class="cart-btn">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingCartModal"><i class='bx bxl-linkedin'></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="option-item">
+                                    <div class="cart-btn">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingCartModal"><i class='bx bx-phone-call'></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            .drodo-nav .navbar .others-option .option-item {
+                                display: inline-block;
+                                margin-left: 15px;
+                                position: relative;
+                                z-index: 3;
+                              }
+                              
+                              .drodo-nav .navbar .others-option .option-item:first-child {
+                                margin-left: 0;
+                              }
+                              
+                              .drodo-nav .navbar .others-option .option-item .search-btn-box {
+                                position: relative;
+                                top: 1px;
+                              }
+                              
+                              .drodo-nav .navbar .others-option .option-item .search-btn-box .search-btn {
+                                font-size: 25px;
+                                cursor: pointer;
+                                color: var(--blackColor);
+                                -webkit-transition: var(--transition);
+                                transition: var(--transition);
+                              }
+                              
+                              .drodo-nav .navbar .others-option .option-item .search-btn-box .search-btn:hover {
+                                color: var(--mainColor);
+                              }
+                              
+                              .drodo-nav .navbar .others-option .option-item .cart-btn {
+                                font-size: 25px;
+                                position: relative;
+                                line-height: 1;
+                              }
+                              
+                              .drodo-nav .navbar .others-option .option-item .cart-btn a {
+                                display: inline-block;
+                                position: relative;
+                              }
+                              
+                              .drodo-nav .navbar .others-option .option-item .cart-btn a span {
+                                position: absolute;
+                                right: -4px;
+                                top: -4px;
+                                width: 14px;
+                                height: 14px;
+                                text-align: center;
+                                line-height: 13.9px;
+                                border-radius: 50%;
+                                color: var(--whiteColor);
+                                background-color: red;
+                                font-size: 10px;
+                                font-weight: 600;
+                              }
+                              
+                              .drodo-nav .navbar .others-option .option-item .wishlist-btn {
+                                font-size: 25px;
+                                position: relative;
+                                line-height: 1;
+                                top: 1px;
+                              }
+                              
+                              .drodo-nav .navbar .others-option .option-item .wishlist-btn a {
+                                display: inline-block;
+                              }
+
+
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option {
+                                position: absolute;
+                                right: 50px;
+                                top: 8px;
+                              }
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option .option-item {
+                                display: inline-block;
+                                margin-left: 12px;
+                                position: relative;
+                                z-index: 3;
+                              }
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option .option-item:first-child {
+                                margin-left: 0;
+                              }
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option .option-item .search-btn-box {
+                                position: relative;
+                                top: 2px;
+                              }
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option .option-item .search-btn-box .search-btn {
+                                font-size: 20px;
+                                cursor: pointer;
+                                color: var(--blackColor);
+                                -webkit-transition: var(--transition);
+                                transition: var(--transition);
+                              }
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option .option-item .search-btn-box .search-btn:hover {
+                                color: var(--mainColor);
+                              }
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option .option-item .cart-btn {
+                                font-size: 20px;
+                                position: relative;
+                                line-height: 1;
+                              }
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option .option-item .cart-btn a {
+                                display: inline-block;
+                                position: relative;
+                              }
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option .option-item .cart-btn a span {
+                                position: absolute;
+                                right: -3px;
+                                top: -3px;
+                                width: 12px;
+                                height: 12px;
+                                text-align: center;
+                                line-height: 11.9px;
+                                border-radius: 50%;
+                                color: var(--whiteColor);
+                                background-color: red;
+                                font-size: 9px;
+                                font-weight: 600;
+                              }
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option .option-item .wishlist-btn {
+                                font-size: 20px;
+                                position: relative;
+                                line-height: 1;
+                                margin-right: -2px;
+                                top: 1px;
+                              }
+                              .drodo-responsive-nav .drodo-responsive-menu.mean-container .others-option .option-item .wishlist-btn a {
+                                display: inline-block;
+                              }
+                              
