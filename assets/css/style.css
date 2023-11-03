@@ -9279,3 +9279,7 @@ Modal CSS
   display: block !important;
 }
 /*# sourceMappingURL=style.css.map */
+.footer-area .row .qr-code{
+  width:10%;
+  height:10%;
+}
