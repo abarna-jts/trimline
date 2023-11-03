@@ -112,28 +112,27 @@ Default CSS
 .fa-brands.fa-facebook {
   color: #3d7df2;
   font-size:30px;
- 
-    border-radius: 3px;
-    transition-property: "background", border-radius;
-    transition-duration: 1s;
-    transition-timing-function: linear;
+  border-radius: 3px;
+  transition-property: "background", border-radius;
+  transition-duration: 1s;
+  transition-timing-function: linear;
     
 }
 .fa-brands.fa-facebook:hover{
-  background: #fff;
-    border-radius: 50%;
+  color: #3d7df2;
+  border-radius: 50%;
 }
 .fa-brands.fa-whatsapp {
   color: #25d366; /* Change the color to your desired color */
   font-size:30px;
-    border-radius: 3px;
-    transition-property: "background", border-radius;
-    transition-duration: 1s;
-    transition-timing-function: linear;
+  border-radius: 3px;
+  transition-property: "background", border-radius;
+  transition-duration: 1s;
+  transition-timing-function: linear;
 }
 .fa-brands.fa-whatsapp:hover{
   color: #25d366;
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .fa-brands.fa-instagram {
@@ -146,7 +145,7 @@ Default CSS
 }
 .fa-brands.fa-instagram:hover{
   color: #bc2a8d;
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 /* Import Google font - Poppins */
@@ -5468,7 +5467,7 @@ Why Choose Us Area CSS
 .single-why-choose-box {
   margin-bottom: 30px;
   text-align: center;
-  background-color: #f2f8f6;
+  background-color: #dcfaf0;
   padding: 35px 20px;
   -webkit-transition: var(--transition);
   transition: var(--transition);
@@ -5638,6 +5637,7 @@ Blog Area CSS
 
 .single-blog-post .post-content .post-meta li:last-child {
   margin-right: 0;
+  margin-bottom:0.5rem;
 }
 
 .single-blog-post .post-content .post-meta li:last-child::before {
