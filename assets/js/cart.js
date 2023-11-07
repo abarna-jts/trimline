@@ -43,39 +43,11 @@ document.querySelectorAll('.minus-btn').forEach(button => {
         const subtotal = productPrice * quantity;
         productRow.querySelector('.subtotal-amount').textContent = `₹${subtotal.toFixed(2)}`;
       }
-    }updateCartTotal();
-  });
-});
-// Deleting cart
-document.querySelectorAll('.remove').forEach(button => {
-  button.addEventListener('click', function() {
-    // Find the closest product row and remove it
-    const productRow = this.closest('tr');
-    
-    if (productRow) {
-      // Remove the product row from the table
-      productRow.remove();
     }
   });
 });
-function updateCartTotal() {
-  const subtotals = document.querySelectorAll('.subtotal-amount');
-  let total = 0;
 
-  subtotals.forEach(subtotalsElement => {
-    const subtotalValue = parseFloat(subtotalsElement.textContent.replace('₹', ''));
-    total += subtotalValue;
-  });
 
-  // Add the fixed shipping charge
-  total += 30; // Add the shipping charge of ₹30
-
-  // Update the total in the HTML
-  document.querySelector('.cart-totals span').textContent = `₹${total.toFixed(2)}`;
-}
-
-// Initialize the cart total when the page loads
-updateCartTotal();
 
 
 
